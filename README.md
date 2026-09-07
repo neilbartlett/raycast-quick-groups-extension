@@ -1,14 +1,18 @@
 # Quick Groups
 
-Quick Groups is a Raycast extension for fast, keyboard-oriented access to small structured datasets in local YAML files.
+**Start with the thing. Then choose the action.**
 
-Use **Search Groups** to search records, or **Browse Fields** to explore values grouped by their derived field labels. Type `qg` in Raycast to find the primary command quickly. The collection dropdown can narrow record search without changing the YAML structure.
+Quick Groups lets you organize Raycast around the things that matter to you. Define your projects, machines, documents, writing, clients, or any other concepts that fit your work. Find a thing once, then use any of the information and actions you have associated with it.
 
-## Configure
+A project might open in your editor, terminal, Finder, or project-management tool. A machine might expose its address, documentation, web interface, and SSH connection. You choose the things, how they are grouped, and what can be done with them.
+
+## Getting started
 
 On first launch, Quick Groups creates its standard `groups` directory in Raycast's extension support folder, adds `quick-groups-example.yaml`, and displays those example records immediately. Choose **Edit Source** on a record to open its YAML and start replacing the examples with your own groups.
 
 No configuration is required. To keep the YAML somewhere else—for example in Dropbox or a Git repository—set the optional **Custom Groups Directory** preference. Quick Groups scans either directory recursively for `.yaml` and `.yml` files.
+
+Use **Search Groups** to find a thing, then open it to see its information and actions. Type `qg` in Raycast to find the command quickly. Use **Browse Fields** when you want to explore the same information by field instead—for example, to browse every IP address or project location.
 
 ```yaml
 machines:
@@ -23,7 +27,7 @@ machines:
       obsidian: NEB/Machines/Dell Optiplex 7020 Micro Plus
 ```
 
-Top-level keys are collections, their children are records, and each record contains ordered fields. Collections with the same name across files are combined. Duplicate collection/record pairs are reported as conflicts and excluded.
+The YAML is simply the editable source for your personal model. Top-level keys are collections, their children are the things in each collection, and each thing contains ordered fields. Collections with the same name across files are combined. Duplicate collection/record pairs are reported as conflicts and excluded.
 
 ## Actions
 
@@ -62,7 +66,7 @@ writing:
 
 Action names under a supported namespace are validated rather than silently treated as data. No code registration is required for `application/<name>` or `raycast/script/<command>`.
 
-Collections can be as broad as `projects` or split into focused groups such as `writing`. The Scrivener example also illustrates that an application action can open an application-specific project bundle, not just an ordinary directory or file.
+Your organization can evolve with your work. Collections can be as broad as `projects` or split into focused groups such as `writing`. The Scrivener example also illustrates that a thing can open in its natural application, not just point to an ordinary directory or file.
 
 The compile-time registry is a separate extension point for advanced users who need behavior beyond the standard actions. See [Actions and extension points](docs/custom-actions.md).
 

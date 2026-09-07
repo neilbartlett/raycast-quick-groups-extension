@@ -1,6 +1,8 @@
 # Standard actions and extension points
 
-Quick Groups provides standard actions that work directly from YAML: `open`, `ssh`, `obsidian`, `pwd`, `application/<name>`, and `raycast/script/<command>`. The compile-time registry is an advanced extension point for behavior that genuinely requires code. YAML files select actions and provide data, but never contain executable code.
+Quick Groups starts with a thing and presents the actions associated with it. Standard actions work directly from YAML: `open`, `ssh`, `obsidian`, `pwd`, `application/<name>`, and `raycast/script/<command>`. This makes it possible to build a useful ecosystem around each project, machine, document, or other concept without changing the extension.
+
+The compile-time registry is an advanced extension point for behavior that genuinely requires code. YAML files select actions and provide data, but never contain executable code.
 
 ## Standard actions
 
