@@ -76,6 +76,8 @@ Fields named like passwords, tokens, secrets, or private keys are masked and the
 
 Quick Groups refreshes while its YAML directory changes. An empty directory offers a **Create Example YAML** action to help first-time setup. The generated file is named `quick-groups-example.yaml`.
 
+For a richer starting point or Store screenshot data, see [`examples/demo-groups.yaml`](examples/demo-groups.yaml). It contains fictional projects, machines, writing, and clients that demonstrate the standard action families without exposing personal information.
+
 For `obsidian`, write `Vault Name/path/to/note`. The first segment selects the vault and the remaining path selects the file.
 
 ## Value substitution
