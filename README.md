@@ -6,7 +6,9 @@ Use **Search Groups** to search records, or **Browse Fields** to explore values 
 
 ## Configure
 
-Set **Groups Directory** in the extension preferences to a directory containing `.yaml` or `.yml` files. Quick Groups scans it recursively.
+On first launch, Quick Groups creates its standard `groups` directory in Raycast's extension support folder, adds `quick-groups-example.yaml`, and displays those example records immediately. Choose **Edit Source** on a record to open its YAML and start replacing the examples with your own groups.
+
+No configuration is required. To keep the YAML somewhere else—for example in Dropbox or a Git repository—set the optional **Custom Groups Directory** preference. Quick Groups scans either directory recursively for `.yaml` and `.yml` files.
 
 ```yaml
 machines:

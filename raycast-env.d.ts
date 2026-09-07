@@ -8,8 +8,8 @@
 /* eslint-disable @typescript-eslint/ban-types */
 
 type ExtensionPreferences = {
-  /** Groups Directory - Directory containing your Quick Groups .yaml and .yml files */
-  "referenceDirectory": string
+  /** Custom Groups Directory - Optional directory override for your Quick Groups YAML files */
+  "referenceDirectory"?: string
 }
 
 /** Preferences accessible in all the extension's commands */

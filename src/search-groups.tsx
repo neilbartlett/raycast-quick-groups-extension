@@ -13,6 +13,7 @@ import {
 import { useMemo, useState } from "react";
 import { createExampleFile } from "./create-example";
 import { displayValue, FieldActions, iconForAction, titleCase } from "./field-ui";
+import { resolveGroupsDirectory } from "./groups-directory";
 import { Diagnostic, ReferenceRecord } from "./model";
 import { buildSearchIndex, searchRecords } from "./search";
 import { useReferenceData } from "./use-reference-data";
@@ -118,7 +119,11 @@ function DiagnosticView({ diagnostic }: { diagnostic: Diagnostic }) {
 
 export default function Command() {
   const { referenceDirectory } = getPreferenceValues<Preferences.SearchGroups>();
-  const { records, diagnostics, isLoading, reload } = useReferenceData(referenceDirectory);
+  const groupsDirectory = resolveGroupsDirectory(referenceDirectory);
+  const { records, diagnostics, isLoading, reload } = useReferenceData(
+    groupsDirectory.path,
+    groupsDirectory.isDefault,
+  );
   const [searchText, setSearchText] = useState("");
   const [collection, setCollection] = useState("__all__");
 
@@ -138,7 +143,7 @@ export default function Command() {
 
   async function createExample() {
     try {
-      const file = await createExampleFile(referenceDirectory);
+      const file = await createExampleFile(groupsDirectory.path);
       await showToast({ style: Toast.Style.Success, title: "Created Example YAML", message: file });
       await reload(false);
     } catch (error) {
@@ -180,7 +185,7 @@ export default function Command() {
               {records.length === 0 ? (
                 <Action title="Create Example YAML" icon={Icon.Document} onAction={createExample} />
               ) : null}
-              <Action.Open title="Open Groups Directory" target={referenceDirectory} />
+              <Action.Open title="Open Groups Directory" target={groupsDirectory.path} />
               <Action
                 title="Reload Group Files"
                 icon={Icon.ArrowClockwise}
@@ -212,7 +217,7 @@ export default function Command() {
                   icon={Icon.ArrowClockwise}
                   onAction={() => reload()}
                 />
-                <Action.Open title="Open Source File" target={record.source} />
+                <Action.Open title="Edit Source" target={record.source} />
                 <Action
                   title="Open Extension Preferences"
                   icon={Icon.Gear}

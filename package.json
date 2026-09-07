@@ -46,10 +46,10 @@
   "preferences": [
     {
       "name": "referenceDirectory",
-      "title": "Groups Directory",
-      "description": "Directory containing your Quick Groups .yaml and .yml files",
+      "title": "Custom Groups Directory",
+      "description": "Optional directory override for your Quick Groups YAML files",
       "type": "directory",
-      "required": true
+      "required": false
     }
   ],
   "scripts": {

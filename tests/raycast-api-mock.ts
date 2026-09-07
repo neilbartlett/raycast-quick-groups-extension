@@ -9,3 +9,5 @@ function TestAction() {
 }
 
 export const Action = new Proxy<Record<string, typeof TestAction>>({}, { get: () => TestAction });
+
+export const environment = { supportPath: "/tmp/quick-groups-support" };

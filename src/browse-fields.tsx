@@ -1,6 +1,7 @@
 import { Action, ActionPanel, Color, getPreferenceValues, Icon, List } from "@raycast/api";
 import { groupFields, FieldGroup } from "./browse-index";
 import { displayValue, FieldActions, titleCase } from "./field-ui";
+import { resolveGroupsDirectory } from "./groups-directory";
 import { useReferenceData } from "./use-reference-data";
 
 function FieldValues({ group }: { group: FieldGroup }) {
@@ -28,7 +29,11 @@ function FieldValues({ group }: { group: FieldGroup }) {
 
 export default function Command() {
   const { referenceDirectory } = getPreferenceValues<Preferences.BrowseFields>();
-  const { records, diagnostics, isLoading, reload } = useReferenceData(referenceDirectory);
+  const groupsDirectory = resolveGroupsDirectory(referenceDirectory);
+  const { records, diagnostics, isLoading, reload } = useReferenceData(
+    groupsDirectory.path,
+    groupsDirectory.isDefault,
+  );
   const groups = groupFields(records);
 
   return (
@@ -40,7 +45,7 @@ export default function Command() {
           description="Add records to your Quick Groups YAML files."
           actions={
             <ActionPanel>
-              <Action.Open title="Open Groups Directory" target={referenceDirectory} />
+              <Action.Open title="Open Groups Directory" target={groupsDirectory.path} />
               <Action
                 title="Reload Group Files"
                 icon={Icon.ArrowClockwise}
